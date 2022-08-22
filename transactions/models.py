@@ -6,7 +6,7 @@ from datetime import datetime
 class Transaction_detail(models.Model):
     transaction_name = models.CharField(max_length=255, null=True)
     amount = models.IntegerField(default=0, null=True, blank=True)
-    date_created = models.DateTimeField(auto_now_add=True)
+    # date_created = models.DateTimeField(auto_now_add=True)
 
 
 
