@@ -20,11 +20,11 @@ class Transaction_detail(models.Model):
     def daily_interest(self):
         now = datetime.now()
         # dt = datetime.datetime.now()
-        # seq = int(dt.strftime("%Y%m%d%H%M%S"))
+        seq = int(now.strftime("%Y%m%d%H%M%S"))
         d_int = 0
-        # for i in range(self.date_created):
-        if now.second == 0:
-            d_int = self.interest / 30
-            d_int += d_int
+        for i in range(now.second):
+            if i == 1:
+                d_int = self.interest / 30
+                d_int += d_int
         return d_int
 
