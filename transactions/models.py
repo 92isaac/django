@@ -6,7 +6,7 @@ from datetime import datetime
 class Transaction_detail(models.Model):
     transaction_name = models.CharField(max_length=255, null=True)
     amount = models.IntegerField(default=0, null=True, blank=True)
-    # date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=False)
 
 
 
@@ -19,16 +19,12 @@ class Transaction_detail(models.Model):
     @property
     def daily_interest(self):
         now = datetime.now()
+        # dt = datetime.datetime.now()
+        # seq = int(dt.strftime("%Y%m%d%H%M%S"))
         d_int = 0
+        # for i in range(self.date_created):
         if now.second == 0:
             d_int = self.interest / 30
             d_int += d_int
         return d_int
 
-        # montlyinterest = self.amount / 12
-        # dailyinterest = montlyinterest / 30
-        # tnow = datetime.now()
-        # seconds = tnow.seconds
-        # if seconds == 30:
-        #     self.daily_interest = self.daily_interest + dailyinterest
-        # return self.daily_interest

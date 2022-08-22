@@ -4,7 +4,7 @@ from .models import *
 
 
 class TransactionAdmin(admin.ModelAdmin):
-    list_display=()
+    list_display=('transaction_name', 'amount', 'interest', 'daily_interest')
     list_filter=()
 
 
