@@ -13,18 +13,23 @@ class Transaction_detail(models.Model):
     @property
     def interest(self):
         amo = int(self.amount)
-        montly_interest = amo / 12
-        return montly_interest
+        annual_interest = amo * 0.15
+        return annual_interest
+
+
+    @property
+    def montly_interest(self):
+        mont_interest = self.interest / 12
+        return mont_interest
+
 
     @property
     def daily_interest(self):
         now = datetime.now()
-        # dt = datetime.datetime.now()
-        seq = int(now.strftime("%Y%m%d%H%M%S"))
         d_int = 0
         for i in range(now.second):
             if i == 1:
-                d_int = self.interest / 30
+                d_int = self.montly_interest / 30
                 d_int += d_int
         return d_int
 
